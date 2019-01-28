@@ -13,31 +13,27 @@ The result is an integer. For example, 5 // 4 is 1 (not 1.25) and 10 // 4 is 2.
 '''
 
 # Number of seconds in a 365-day year
-seconds_per_year = 60 * 60 * 24 * 365
+secondsPerYear = 60 * 60 * 24 * 365
 
 # Current US population
-starting_pop = 312032486
+startingPopulation = 312032486
 
 # The current year
-starting_year = 2019
+startingYear = 2019
 
-def project_Population():
+def project_Population(currentPopulation, currentYear):
 
-    current_pop = starting_pop
-    current_year = starting_year
-    years = 5
-    i = 0
+    endYear = currentYear + 5
 
-    annual_births = seconds_per_year / 7
-    annual_deaths = seconds_per_year / 13
-    annual_immigrants = seconds_per_year / 45
+    annualBirths = secondsPerYear / 7
+    annualDeaths = secondsPerYear / 13
+    annualImmigrants = secondsPerYear / 45
 
-    while i < years:
+    while currentYear < endYear:
 
-        year_pop = current_pop + annual_births - annual_deaths + annual_immigrants
-        print(str(current_year) + ' Population: ' + str(int(year_pop)))
-        current_pop = year_pop
-        current_year += 1
-        i += 1
+        yearPop = currentPopulation + annualBirths - annualDeaths + annualImmigrants
+        print(currentYear, 'Population:', int(yearPop))
+        currentPopulation = yearPop
+        currentYear += 1
 
-project_Population()
+project_Population(startingPopulation, startingYear)
