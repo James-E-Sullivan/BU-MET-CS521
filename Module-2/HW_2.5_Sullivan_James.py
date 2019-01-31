@@ -7,7 +7,7 @@ gratuity and 11.5 as the total.
 '''
 
 subtotal, gratuityRate = eval(input('Enter the subtotal and gratuity rate'
-                          'separated by commas: '))
+                          ' separated by commas: '))
 
 gratuity = (subtotal * gratuityRate) / 100
 total = subtotal - gratuity
