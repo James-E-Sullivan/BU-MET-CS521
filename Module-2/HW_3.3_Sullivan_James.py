@@ -44,6 +44,8 @@ orlando_coord = [orlando_lat, orlando_long]
 savannah_coord = [savannah_lat, savannah_long]
 charlotte_coord = [charlotte_lat, charlotte_long]
 
+city_list = [atlanta_coord, orlando_coord, savannah_coord, charlotte_coord]
+
 EARTH_RADIUS = 6371.01  # Earth's radius, in km
 
 '''
@@ -53,6 +55,26 @@ distance_atlanta_orlando = EARTH_RADIUS * math.acos(
      * math.cos(atlanta_long - orlando_long))
 )
 '''
+
+def convertToRad(cities):
+
+    for city in cities:
+
+        rad_coord = []
+
+        for coordinate in city:
+            rad_coord.append(math.radians(coordinate))
+
+        cities[city] = rad_coord
+
+    return cities
+
+
+#atlanta_rad = convertToRad(atlanta_coord)
+#orlando_rad = convertToRad(orlando_coord)
+
+rad_city_list = convertToRad(city_list)
+
 
 def greatCircleDistance(city_1_coord, city_2_coord):
 
@@ -64,6 +86,8 @@ def greatCircleDistance(city_1_coord, city_2_coord):
 
     return distance
 
-print(greatCircleDistance(atlanta_coord, orlando_coord))
+#print(greatCircleDistance(atlanta_rad, orlando_rad))
+
+print(rad_city_list)
 
 
