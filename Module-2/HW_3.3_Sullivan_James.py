@@ -32,52 +32,32 @@ area = sqrt(s(s - side1) * (s - side2) * (s- side3))
 
 import math
 
-# City coordinates, listed in latitude and longitude
-atlanta_lat, atlanta_long = 33.7242700, -84.5785800
-orlando_lat, orlando_long = 28.4115300, -81.5250400
-savannah_lat, savannah_long = 32.0084900, -81.2143700
-charlotte_lat, charlotte_long = 35.1336100, -80.9636300
-
 # Adds city coordinates into a list structured [lat, long]
-atlanta_coord = [atlanta_lat, atlanta_long]
-orlando_coord = [orlando_lat, orlando_long]
-savannah_coord = [savannah_lat, savannah_long]
-charlotte_coord = [charlotte_lat, charlotte_long]
+atlanta_coord = [33.7242700, -84.5785800]
+orlando_coord = [28.4115300, -81.5250400]
+savannah_coord = [32.0084900, -81.2143700]
+charlotte_coord = [35.1336100, -80.9636300]
 
-city_list = [atlanta_coord, orlando_coord, savannah_coord, charlotte_coord]
 
 EARTH_RADIUS = 6371.01  # Earth's radius, in km
 
-'''
-distance_atlanta_orlando = EARTH_RADIUS * math.acos(
-    (math.sin(atlanta_lat) * math.sin(orlando_lat)) +
-    (math.cos(atlanta_lat) * math.cos(orlando_lat)
-     * math.cos(atlanta_long - orlando_long))
-)
-'''
 
-def convertToRad(cities):
+class City:
 
-    for city in cities:
+    def __init__(self, name):
+        self.name = name
+        self.degree_coordinates = []
+        self.rad_coordinates = []
 
-        rad_coord = []
+    def add_degree_coordinates(self, city_coord):
+        self.degree_coordinates.append(city_coord)
 
-        for coordinate in city:
-            rad_coord.append(math.radians(coordinate))
-
-        cities[city] = rad_coord
-
-    return cities
-
-
-#atlanta_rad = convertToRad(atlanta_coord)
-#orlando_rad = convertToRad(orlando_coord)
-
-rad_city_list = convertToRad(city_list)
+    def add_rad_coordinates(self, city_coord):
+        for coordinate in city_coord:
+            self.rad_coordinates.append(math.radians(coordinate))
 
 
 def greatCircleDistance(city_1_coord, city_2_coord):
-
     distance = EARTH_RADIUS * math.acos(
         (math.sin(city_1_coord[0]) * math.sin(city_2_coord[0])) +
         (math.cos(city_1_coord[0]) * math.cos(city_2_coord[0])
@@ -86,8 +66,47 @@ def greatCircleDistance(city_1_coord, city_2_coord):
 
     return distance
 
-#print(greatCircleDistance(atlanta_rad, orlando_rad))
 
-print(rad_city_list)
+def areaOfTriangle(city_1_coord, city_2_coord, city_3_coord):
+
+    side_1 = greatCircleDistance(city_1_coord, city_2_coord)
+    side_2 = greatCircleDistance(city_1_coord, city_3_coord)
+    side_3 = greatCircleDistance(city_2_coord, city_3_coord)
+
+    s = ((side_1 + side_2 + side_3) / 2)
+
+    area = math.sqrt(
+        s * (s - side_1) * (s - side_2) * (s - side_3)
+    )
+
+    return area
 
 
+Atlanta = City('Atlanta')
+Atlanta.add_rad_coordinates(atlanta_coord)
+
+Orlando = City('Orlando')
+Orlando.add_rad_coordinates(orlando_coord)
+
+Savannah = City('Savannah')
+Savannah.add_rad_coordinates(savannah_coord)
+
+Charlotte = City('Charlotte')
+Charlotte.add_rad_coordinates(charlotte_coord)
+
+
+triangle_1 = areaOfTriangle(
+    Atlanta.rad_coordinates,
+    Orlando.rad_coordinates,
+    Savannah.rad_coordinates
+)
+
+triangle_2 = areaOfTriangle(
+    Atlanta.rad_coordinates,
+    Savannah.rad_coordinates,
+    Charlotte.rad_coordinates
+)
+
+total_area = triangle_1 + triangle_2
+
+print(total_area)
