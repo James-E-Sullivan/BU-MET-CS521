@@ -33,9 +33,9 @@ side_length = (2 * center_to_vertex) * (math.sin(math.pi / 5))
 
 # Known issue: the provided formula is for the area of a hexagon
 # Used math.pow() function instead of standard **.
-area = ((3 * math.sqrt(3)) / 2) * (math.pow(side_length, 2))
+hexagon_area = ((3 * math.sqrt(3)) / 2) * (math.pow(side_length, 2))
 
 pentagon_area = (1/4) * math.sqrt(5 * (5 + (2 * math.sqrt(5)))) * (side_length ** 2)
 
-print(area)
-print(pentagon_area)
+print('Using the formula provided in the book, the area is: ', hexagon_area)
+print('The area of the pentagon is: ', pentagon_area)
