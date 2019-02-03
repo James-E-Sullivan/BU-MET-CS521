@@ -49,16 +49,16 @@ class City:
     and used to more easily reference the data.
     """
 
-    def __init__(self, name):
-        self.name = name
-        self.degree_coordinates = []
+    def __init__(self, degree_coordinates):
+
+        # New class objects must be instantiated with coordinates, in degrees.
+
+        self.degree_coordinates = degree_coordinates
+
+        # When a class is instantiated, coordinates are converted to
+        # radians and stored in list self.rad_coordinates.
         self.rad_coordinates = []
-
-    def add_degree_coordinates(self, city_coord):
-        self.degree_coordinates.append(city_coord)
-
-    def add_rad_coordinates(self, city_coord):
-        for coordinate in city_coord:
+        for coordinate in degree_coordinates:
             self.rad_coordinates.append(math.radians(coordinate))
 
 
@@ -105,19 +105,13 @@ def areaOfTriangle(city_1_coord, city_2_coord, city_3_coord):
 
     return area
 
+
 # Instantiates City class objects for the four cities
 # Adds name and coordinates, converted to radians.
-Atlanta = City('Atlanta')
-Atlanta.add_rad_coordinates(atlanta_coord)
-
-Orlando = City('Orlando')
-Orlando.add_rad_coordinates(orlando_coord)
-
-Savannah = City('Savannah')
-Savannah.add_rad_coordinates(savannah_coord)
-
-Charlotte = City('Charlotte')
-Charlotte.add_rad_coordinates(charlotte_coord)
+Atlanta = City(atlanta_coord)
+Orlando = City(orlando_coord)
+Savannah = City(savannah_coord)
+Charlotte = City(charlotte_coord)
 
 
 # Computes area of 1st triangle
