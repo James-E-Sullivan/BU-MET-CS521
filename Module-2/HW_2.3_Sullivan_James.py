@@ -8,4 +8,4 @@ imperialDistance = eval(input('Enter a value for feet: '))
 
 metricDistance = imperialDistance * 0.305
 
-print(metricDistance)
+print(imperialDistance, 'feet is', metricDistance, 'meters')
