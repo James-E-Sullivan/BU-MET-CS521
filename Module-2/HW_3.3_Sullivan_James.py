@@ -1,4 +1,4 @@
-'''
+"""
 (Geography: estimate areas)
 Find the GPS locations for Atlanta, Georgia; Orlando Florida;
 Savannah, Georgia; and Charlotte, North Caroline from
@@ -28,11 +28,12 @@ Area of a triangle:
 
 s = (side1 + side2 + side3)/2
 area = sqrt(s(s - side1) * (s - side2) * (s- side3))
-'''
+"""
+
 
 import math
 
-# Adds city coordinates into a list structured [lat, long]
+# Adds city coordinates into a list structured [lat, long] for each city.
 atlanta_coord = [33.7242700, -84.5785800]
 orlando_coord = [28.4115300, -81.5250400]
 savannah_coord = [32.0084900, -81.2143700]
@@ -43,6 +44,10 @@ EARTH_RADIUS = 6371.01  # Earth's radius, in km
 
 
 class City:
+    """
+    City class used to store and manipulate information about cities,
+    and used to more easily reference the data.
+    """
 
     def __init__(self, name):
         self.name = name
@@ -58,6 +63,16 @@ class City:
 
 
 def greatCircleDistance(city_1_coord, city_2_coord):
+    """
+    Function takes in lists of latitude and longitude coordinates
+    for two cities. Coordinates must be in radians, not degrees.
+
+    Distance between two cities calculated using the formula the
+    Great Circle Distance Formula.
+
+    Returns the distance between the two cities.
+    """
+
     distance = EARTH_RADIUS * math.acos(
         (math.sin(city_1_coord[0]) * math.sin(city_2_coord[0])) +
         (math.cos(city_1_coord[0]) * math.cos(city_2_coord[0])
@@ -68,6 +83,15 @@ def greatCircleDistance(city_1_coord, city_2_coord):
 
 
 def areaOfTriangle(city_1_coord, city_2_coord, city_3_coord):
+    """
+    Function takes in lists of latitude and longitude coordinates
+    for three cities. Coordinates must be in radians, not degrees.
+
+    greatCircleDistance function used to get length of each side
+    of a triangle.
+
+    Returns the area of the triangle between the 3 cities.
+    """
 
     side_1 = greatCircleDistance(city_1_coord, city_2_coord)
     side_2 = greatCircleDistance(city_1_coord, city_3_coord)
@@ -81,7 +105,8 @@ def areaOfTriangle(city_1_coord, city_2_coord, city_3_coord):
 
     return area
 
-
+# Instantiates City class objects for the four cities
+# Adds name and coordinates, converted to radians.
 Atlanta = City('Atlanta')
 Atlanta.add_rad_coordinates(atlanta_coord)
 
@@ -95,18 +120,21 @@ Charlotte = City('Charlotte')
 Charlotte.add_rad_coordinates(charlotte_coord)
 
 
+# Computes area of 1st triangle
 triangle_1 = areaOfTriangle(
     Atlanta.rad_coordinates,
     Orlando.rad_coordinates,
     Savannah.rad_coordinates
 )
 
+# Computes area of 2nd triangle
 triangle_2 = areaOfTriangle(
     Atlanta.rad_coordinates,
     Savannah.rad_coordinates,
     Charlotte.rad_coordinates
 )
 
+# Adds areas of 2 triangles to find total area between the 4 cities
 total_area = triangle_1 + triangle_2
 
 print(total_area)
