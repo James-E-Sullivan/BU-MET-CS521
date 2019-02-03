@@ -131,4 +131,4 @@ triangle_2 = areaOfTriangle(
 # Adds areas of 2 triangles to find total area between the 4 cities
 total_area = triangle_1 + triangle_2
 
-print(total_area)
+print('Total area between cities:', total_area, 'square km')
