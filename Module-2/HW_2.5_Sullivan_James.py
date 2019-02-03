@@ -8,7 +8,7 @@ gratuity and 11.5 as the total.
 
 # Prompts user for subtotal and gratuity rate, assigns them to variables
 subtotal, gratuityRate = eval(input('Enter the subtotal and gratuity rate'
-                          ' separated by commas: '))
+                              ' separated by commas: '))
 
 # Calculates the gratuity owed, based on the subtotal and gratuity rate
 gratuity = round(((subtotal * gratuityRate) / 100), 2)  # Round to 2 decimals
