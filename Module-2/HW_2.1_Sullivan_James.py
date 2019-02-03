@@ -11,4 +11,4 @@ celsiusTemp = eval(input('Enter a degree in Celsius: '))
 
 fahrenheitTemp = (9/5) * celsiusTemp + 32
 
-print(fahrenheitTemp)
+print(celsiusTemp, 'Celsius is', fahrenheitTemp, 'Fahrenheit')
