@@ -11,31 +11,18 @@ Kilograms   Pounds
 199         437.6
 """
 
-import pandas as pd
-
+# Assigns maximum kilogram value for table
 max_value = 199
 
-kilo_list = []
-pound_list = []
-
+# Prints header for table
 print('Kilograms  Pounds')
 
+# Loops from 1 to 199, using 'kilos' as the index
+# Calculates 'pounds' based on value of kilos, and prints formatted values
 for kilos in range(1, max_value + 1):
 
     pounds = kilos * 2.2
 
-    kilo_list.append(kilos)
-    pound_list.append(pounds)
-
     print(format(kilos, "<9d") + '  ' + format(pounds, ">6.1f"))
 
     kilos += 1
-
-"""
-print('-------------------------------------------------------')
-
-d = {'Kilograms': kilo_list, 'Pounds': pound_list}
-
-df_1 = pd.DataFrame(data=d)
-print(df_1.to_string(index=False))
-"""
