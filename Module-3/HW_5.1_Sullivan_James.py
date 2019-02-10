@@ -31,6 +31,7 @@ while True:
     else:
         count += 1
         total += user_int
+
         if user_int > 0:
             positives += 1
 

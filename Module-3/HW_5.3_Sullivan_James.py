@@ -8,7 +8,7 @@ Kilograms   Pounds
 3           6.6
 ...
 197         433.4
-199         437.6
+199         437.8
 """
 
 # Assigns maximum kilogram value for table
@@ -17,9 +17,9 @@ max_value = 199
 # Prints header for table
 print('Kilograms  Pounds')
 
-# Loops from 1 to 199, using 'kilos' as the index
+# Loops from 1 to 199, using 'kilos' as the index, in steps of 2
 # Calculates 'pounds' based on value of kilos, and prints formatted values
-for kilos in range(1, max_value + 1):
+for kilos in range(1, max_value + 1, 2):
 
     pounds = kilos * 2.2
 
