@@ -18,7 +18,6 @@ while True:
 
     user_int = eval(input("Enter an integer, the input ends if it is 0: "))
 
-
     if user_int == 0 and count == 0:
         print("You didn't enter any number")
         sys.exit()
