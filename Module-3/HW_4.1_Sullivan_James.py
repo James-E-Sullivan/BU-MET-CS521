@@ -17,23 +17,28 @@ is positive, display two roots. If the discriminant is 0, display one root.
 Otherwise, display "The equation has no real roots."
 """
 
+import math
+
 a, b, c = eval(input("Enter a, b, c: "))
 
 discriminant = (b ** 2) - (4 * a * c)
 
+# if discriminant is positive, solve for both roots
 if discriminant > 0:
 
-    r_1 = (-b + discriminant) / (2 * a)
-    r_2 = (-b - discriminant) / (2 * a)
+    r_1 = (-b + math.sqrt(discriminant)) / (2 * a)
+    r_2 = (-b - math.sqrt(discriminant)) / (2 * a)
 
     print("The roots are", r_1, "and", r_2)
 
+# If discriminant equals 0, solve for one root
 elif discriminant == 0:
 
     r_1 = (-b + discriminant) / (2 * a)
 
     print("The root is ", r_1)
 
+# Otherwise (assuming negative discriminant), the equation has no real roots
 else:
 
     print("The equation has no real roots.")
