@@ -12,7 +12,7 @@ Write a program that prompts the user to enter
 a, b, c, d, e, and f
 and display the result.
 
-If (ad - bc) is 0, report that "The Equation has no solution."
+If (ad - bc) is 0, report that "The equation has no solution."
 """
 
 # simultaneous assignment of values from user input
@@ -20,7 +20,7 @@ a, b, c, d, e, f = eval(input("Enter a, b, c, d, e, f: "))
 
 # if (ad - bc) is 0, 'The Equation has no solution' is printed
 if (a * d) - (b * c) == 0:
-    print("The Equation has no solution")
+    print("The equation has no solution")
 
 # Otherwise, calculations are completed and x and y values printed
 else:
