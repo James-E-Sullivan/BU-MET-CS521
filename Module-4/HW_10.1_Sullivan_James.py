@@ -16,7 +16,7 @@ def grade_score(student_score, max_score):
     Assigns a grade based on a student's score and the maximum score
     :param student_score: The student score(int or float)
     :param max_score: The maximum score (int or float)
-    :return:
+    :return student_grade:
     """
 
     if student_score >= max_score - 10:
@@ -62,7 +62,8 @@ while True:
 
         for score in score_list:
             grade = grade_score(score, find_best_score(score_list))
-            print('Student', student_number, 'score is', score, 'and grade is', grade)
+            print('Student', student_number, 'score is', score,
+                  'and grade is', grade)
             student_number += 1
 
         break
