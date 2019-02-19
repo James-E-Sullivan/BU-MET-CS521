@@ -22,7 +22,6 @@ def main():
     keys = ['D', 'B', 'D', 'C', 'C', 'D', 'A', 'E', 'A', 'D']
 
     student_scores = []
-    student_dict = {}
     ordered_scores = []
 
     # Grade all answers
@@ -33,41 +32,32 @@ def main():
             if answers[i][j] == keys[j]:
                 correctCount += 1
 
+        # Append student scores to a list
         student_scores.append([i, correctCount])
-        student_dict[i] = correctCount
 
-        print("Student", i, "'s correct count is", correctCount)
+    # Initialize a list of ordered scores, starting with first student's score
+    ordered_scores.append(student_scores[0])
 
+    # Append/insert scores into ordered scores, in descending order
+    # Keeps original Student # and score together
+    for i in range(1, len(student_scores)):
 
+        for j in range(len(ordered_scores)):
 
-    print(student_scores)
-    print(student_dict)
-    """
-    ordered_scores = [(k, student_dict[k]) for k in sorted(
-        student_dict, key=student_dict.get, reverse=True)]
-    print(ordered_scores)
-    """
-    for i in range(len(student_scores)):
-        print(student_scores[i][1])
+            # Inserts score to ahead of value if it is greater
+            if student_scores[i][1] > ordered_scores[j][1]:
+                ordered_scores.insert(j, student_scores[i])
+                break
 
+            # Appends score to end of list if it <= all other values
+            elif (j + 1) is len(ordered_scores):
+                ordered_scores.append(student_scores[i])
 
+    # Iterates through ordered_scores, prints student # and score
+    for i in range(len(ordered_scores)):
 
-
-
-    ordered_scores = [(k, student_scores[k]) for k in sorted(student_scores, reverse=True)]
-
-    def selection_sort(score_list):
-
-        start_point = 0
-        for students in score_list:
-            students[1]
-
-        for start_point in range(0, len(score_list)):
-
-
-
-            min_value_index = score_list.index
-
+        print("Student", str(ordered_scores[i][0]) + "'s correct count is",
+              ordered_scores[i][1])
 
 
 main()  # Call the main function
