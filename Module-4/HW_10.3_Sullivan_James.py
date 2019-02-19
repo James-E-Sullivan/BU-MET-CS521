@@ -56,6 +56,4 @@ def display_count(count_list):
 
 final_count_list = count_numbers(prompt_input())
 
-print(final_count_list)
-
 display_count(final_count_list)
