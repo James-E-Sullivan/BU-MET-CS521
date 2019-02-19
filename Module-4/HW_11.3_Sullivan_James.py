@@ -22,7 +22,6 @@ def main():
     keys = ['D', 'B', 'D', 'C', 'C', 'D', 'A', 'E', 'A', 'D']
 
     student_scores = []
-    ordered_scores = []
 
     # Grade all answers
     for i in range(len(answers)):
@@ -33,31 +32,16 @@ def main():
                 correctCount += 1
 
         # Append student scores to a list
-        student_scores.append([i, correctCount])
+        student_scores.append([correctCount, i])
 
-    # Initialize a list of ordered scores, starting with first student's score
-    ordered_scores.append(student_scores[0])
+    # Sorts score/student pairs based on first value (score), descending order
+    student_scores.sort(reverse=True)
 
-    # Append/insert scores into ordered scores, in descending order
-    # Keeps original Student # and score together
-    for i in range(1, len(student_scores)):
+    # Prints student number and score values
+    for i in range(len(student_scores)):
+        print("Student", str(student_scores[i][1]) + "'s correct count is",
+              student_scores[i][0])
 
-        for j in range(len(ordered_scores)):
-
-            # Inserts score to ahead of value if it is greater
-            if student_scores[i][1] > ordered_scores[j][1]:
-                ordered_scores.insert(j, student_scores[i])
-                break
-
-            # Appends score to end of list if it <= all other values
-            elif (j + 1) is len(ordered_scores):
-                ordered_scores.append(student_scores[i])
-
-    # Iterates through ordered_scores, prints student # and score
-    for i in range(len(ordered_scores)):
-
-        print("Student", str(ordered_scores[i][0]) + "'s correct count is",
-              ordered_scores[i][1])
 
 
 main()  # Call the main function
