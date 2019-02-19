@@ -6,15 +6,15 @@ occurrences of each.
 '''
 
 
+def count_numbers(integer_list):
 
-count_list = []
-for number in range(1, 101):
-    count_list.append(number)
+    count_list = 100 * [0]
 
-number_dict = {}
-for number in number_dict:
-    '''
-    '''
+    for number in integer_list:
+
+        count_list[number - 1] += 1
+
+    return count_list
 
 
 def prompt_input():
@@ -25,16 +25,27 @@ def prompt_input():
     return input_int_list
 
 
-#x = True
+def display_count(count_list):
+
+    for number in range(len(count_list)):
+
+        if count_list[number] is 0:
+            continue
+
+        else:
+            current_integer = number + 1
+            count = count_list[number]
+            print(current_integer, 'occurs', count, 'times')
+
+
 while True:
 
     try:
-
         user_int_list = prompt_input()
 
         for element in user_int_list:
 
-            if element not in count_list:
+            if element not in range(1, 101):
                 print('One or more numbers entered are outside the required'
                       ' range. Please enter number between 1 and 100.')
                 user_int_list = prompt_input()
@@ -42,18 +53,14 @@ while True:
         break
 
     except ValueError:
-
         print('Not a valid input. Please enter an integer between 1-100.')
         user_int_list = prompt_input()
 
 
-
-
 print(user_int_list)
-print(count_list)
 
+final_count_list = count_numbers(user_int_list)
 
-'''
-for number in input_int_list:
-    
-'''
+print(final_count_list)
+
+display_count(final_count_list)
