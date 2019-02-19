@@ -1,26 +1,18 @@
-'''
+"""
 Homework 10.3
 (Count occurrence of numbers)
 Write a program that reads some integers between 1 and 100 and counts the
 occurrences of each.
-'''
-
-
-def count_numbers(integer_list):
-
-    print(integer_list)
-
-    count_list = 100 * [0]
-
-    for number in range(len(integer_list)):
-
-        count_list[integer_list[number] - 1] += 1
-
-    return count_list
+"""
 
 
 def prompt_input():
-
+    """
+    Prompts user for integers, separated by spaces. Input string is split into
+    a list (user_int_list) and returned. Checks for invalid inputs and prompts
+    user again if necessary.
+    :return user_int_list:
+    """
     while True:
         try:
             user_int_list = [int(input_int) for input_int in input(
@@ -41,8 +33,29 @@ def prompt_input():
     return user_int_list
 
 
-def display_count(count_list):
+def count_numbers(integer_list):
+    """
+    :param integer_list: List of integers
+    :return count_list: List with the count of each integer between 1-100 in
+    integer list.
+    """
+    print(integer_list)
 
+    count_list = 100 * [0]
+
+    for number in integer_list:
+
+        count_list[number - 1] += 1
+
+    return count_list
+
+
+def display_count(count_list):
+    """
+    :param count_list: List with the count of integers (corresponding to
+    index - 1).
+    Prints out the integer and count for each integer with a count > 0.
+    """
     for number in range(len(count_list)):
 
         if count_list[number] is 0:
@@ -55,5 +68,4 @@ def display_count(count_list):
 
 
 final_count_list = count_numbers(prompt_input())
-
 display_count(final_count_list)
