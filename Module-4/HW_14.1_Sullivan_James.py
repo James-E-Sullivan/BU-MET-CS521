@@ -43,8 +43,13 @@ def main():
 
     # Print keyWords that were found in text, along with counts
     for key in keyWord_dict:
-        if keyWord_dict[key] != 0:
-            print(key, 'occurs', keyWord_dict[key], 'time(s).')
+        if keyWord_dict[key] is 0:
+            continue
 
+        elif keyWord_dict[key] is 1:
+            print(key, 'occurs', keyWord_dict[key], 'time')
+
+        else:
+            print(key, 'occurs', keyWord_dict[key], 'times')
 
 main()
