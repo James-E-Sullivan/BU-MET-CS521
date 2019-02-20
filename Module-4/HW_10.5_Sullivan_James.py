@@ -12,7 +12,11 @@ The distinct numbers are: 1 2 3 6 4 5
 
 
 def get_ten_numbers():
-
+    """
+    User prompted for 10 integers. User prompted again if there is
+    a value error or if there are not exactly 10 integers input.
+    :return user_int_list: List of 10 integers from user
+    """
     while True:
         try:
             user_int_list = [int(input_int) for input_int in input(
@@ -29,10 +33,13 @@ def get_ten_numbers():
 
 
 def get_distinct_numbers(ten_number_list):
-
+    """
+    Takes in list and returns set of list (unique values)
+    :param ten_number_list:
+    :return ten_number_set:
+    """
     ten_number_set = set(ten_number_list)
-    distinct_list = list(ten_number_set)
-    return distinct_list
+    return ten_number_set
 
 
 ten_numbers = get_ten_numbers()
