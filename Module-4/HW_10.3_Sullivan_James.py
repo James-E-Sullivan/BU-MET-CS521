@@ -60,6 +60,11 @@ def display_count(count_list):
         if count_list[number] is 0:
             continue
 
+        elif count_list[number] is 1:
+            current_integer = number + 1
+            count = count_list[number]
+            print(current_integer, 'occurs', count, 'time')
+
         else:
             current_integer = number + 1
             count = count_list[number]
