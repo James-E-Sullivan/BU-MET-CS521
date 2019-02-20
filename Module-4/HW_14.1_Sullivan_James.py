@@ -3,6 +3,8 @@ HW 14.1
 (Display keywords)
 Revise Listing 14.4 CountKeywords.py to display the key-words in a Python source
 file as well as to count the number of keywords.
+
+Known issues: This script will read any instance of keyWords, even in comments.
 """
 
 import os.path
