@@ -31,7 +31,7 @@ def main():
             if answers[i][j] == keys[j]:
                 correctCount += 1
 
-        # Append student scores to a list
+        # Append student score/number pair list to a list
         student_scores.append([correctCount, i])
 
     # Sorts score/student pairs based on first value (score), descending order
