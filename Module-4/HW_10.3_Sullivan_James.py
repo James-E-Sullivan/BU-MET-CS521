@@ -39,7 +39,6 @@ def count_numbers(integer_list):
     :return count_list: List with the count of each integer between 1-100 in
     integer list.
     """
-    print(integer_list)
 
     count_list = 100 * [0]
 
