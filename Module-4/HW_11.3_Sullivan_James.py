@@ -43,5 +43,4 @@ def main():
               student_scores[i][0])
 
 
-
 main()  # Call the main function
