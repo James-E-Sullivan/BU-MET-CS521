@@ -13,14 +13,20 @@ pentagonal numbers with 10 numbers on each line.
 
 
 def getPentagonalNumber(n):
-
+    """
+    :param n: Input number
+    :return pentagonal_number:
+    """
     pentagonal_number = (n * ((3 * n) - 1)) / 2
     return pentagonal_number
 
 
-for i in range(1, 100):
+# Display pentagonal numbers from 1 to 100 (inclusive)
+for i in range(1, 101):
 
     if i % 10 == 0:
+        # If i divisible by 10, end print statement with newline
         print(int(getPentagonalNumber(i)))
     else:
+        # Space instead of newline if number isn't divisible by 10
         print(int(getPentagonalNumber(i)), end=' ')
