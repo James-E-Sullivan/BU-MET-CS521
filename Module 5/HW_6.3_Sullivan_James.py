@@ -32,9 +32,13 @@ def reverse(number):
 # Return true if number is a palindrome
 def isPalindrome(number):
 
-    if number == reverse(number):
-        print(number)
+    # Negative numbers are not palindromic
+    if number < 0:
+        return False
+
+    elif number == reverse(number):
         return True
+
     else:
         return False
 
@@ -44,6 +48,7 @@ while True:
     try:
         user_int = int(input('Please enter an integer: '))
         break
+
     except ValueError:
         print('Invalid format. You did not enter an integer.')
         continue
