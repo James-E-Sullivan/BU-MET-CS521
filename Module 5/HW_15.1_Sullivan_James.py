@@ -42,6 +42,7 @@ def sumDigitsHelper(n, index):
 while True:
 
     # Prompts user for integer, stores absolute value of input in user_int
+    # Evaluates sum of digits. Does not take sign of entered number into consideration.
     try:
         user_int = abs(int(input('Enter an integer: ').strip()))
         break
