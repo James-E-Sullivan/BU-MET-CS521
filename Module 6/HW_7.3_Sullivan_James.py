@@ -72,7 +72,14 @@ class Account:
 
 
 def testAccount():
-
+    """
+    Tests account class methods.
+    Creates account_1 with id: 1122, initial balance: $20,000, annual interest rate: 4.5%.
+    Withdraws $2500 with self.withdraw() method
+    Deposits $3000 with self.deposit() method
+    Prints ID (1122), Balance ($20,500.00), Monthly Interest Rate (0.375%), and Monthly interest ($76.88)
+    Monthly interest is calculated after self.withdraw() and self.deposit() methods used.
+    """
     account_1 = Account(1122, 20000.00, 4.5)
 
     account_1.withdraw(2500)
