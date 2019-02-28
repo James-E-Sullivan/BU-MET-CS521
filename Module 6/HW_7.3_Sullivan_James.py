@@ -30,3 +30,58 @@ a balance of $20,000, and an annual interest rate of 4.5%. Use the withdraw
 method to withdraw $2,500, use the deposit method to deposit $3,000, and print
 the id, balance, monthly interest rate, and monthly interest.
 """
+
+
+class Account:
+
+    def __init__(self, id_1=0, balance=100.00, annual_interest_rate=0.0):
+        self.__id = id_1
+        self.__balance = balance
+        self.__annual_interest_rate = annual_interest_rate
+
+    def getMonthlyInterest(self):
+        monthly_interest_rate = self.__annual_interest_rate / 12
+        return (self.__balance * monthly_interest_rate) / 100
+
+    def get_monthly_interest_rate(self):
+        return self.__annual_interest_rate / 12
+
+    def get_id(self):
+        return self.__id
+
+    def set_id(self, new_id):
+        self.__id = new_id
+
+    def get_balance(self):
+        return self.__balance
+
+    def set_balance(self, new_balance):
+        self.__balance = new_balance
+
+    def get_annual_interest_rate(self):
+        return self.__annual_interest_rate
+
+    def set_annual_interest_rate(self, new_annual_interest_rate):
+        self.__annual_interest_rate = new_annual_interest_rate
+
+    def withdraw(self, withdraw_amount):
+        self.set_balance(self.__balance - withdraw_amount)
+
+    def deposit(self, deposit_amount):
+        self.set_balance(self.__balance + deposit_amount)
+
+
+def testAccount():
+
+    account_1 = Account(1122, 20000.00, 4.5)
+
+    account_1.withdraw(2500)
+    account_1.deposit(3000)
+
+    print('ID:', account_1.get_id())
+    print('Balance:', account_1.get_balance(), "0.2f")
+    print('Monthly interest rate:', account_1.get_monthly_interest_rate())
+    print('Monthly interest:', round(account_1.getMonthlyInterest(), 2))
+
+
+testAccount()
