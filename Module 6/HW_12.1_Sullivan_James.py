@@ -49,7 +49,7 @@ class GeometricObject:
         return self.__filled
 
     def setFilled(self, filled):
-        self.__fileed = filled
+        self.__filled = filled
 
     def __str__(self):
         return "color: " + self.__color + " and filled: " + str(self.__filled)
@@ -96,7 +96,7 @@ def test_Triangle_Class():
                 ' separated by spaces: ').split()]
 
             color = input("Enter the triangle's color: ")
-            filled = bool("Is the triangle filled? 1=Yes, 0=No")
+            filled = bool(int(input("Is the triangle filled? 1=Yes, 0=No: ")))
 
             if len(side_list) is not 3:
                 print('Incorrect amount of inputs. Try again.')

@@ -81,4 +81,5 @@ def test_LinearEquation():
     print('x is', equation2.getX())
     print('y is', equation2.getY())
 
+
 test_LinearEquation()
