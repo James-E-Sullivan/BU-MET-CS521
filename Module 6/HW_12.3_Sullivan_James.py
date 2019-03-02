@@ -19,7 +19,7 @@ class Account:
         self.__balance = balance
         self.__annual_interest_rate = annual_interest_rate
 
-    def getMonthlyInterest(self):
+    def get_monthly_interest(self):
         monthly_interest_rate = self.__annual_interest_rate / 12
         return (self.__balance * monthly_interest_rate) / 100
 
@@ -51,54 +51,91 @@ class Account:
         self.set_balance(self.__balance + deposit_amount)
 
 
-class ATM_Menu:
-
-    def __init__(self, account_list):
-        self.__account_list = account_list
-
-    def account_login(self, account_id):
-        # add code here...
-
-
-
 def test_atm():
 
     account_list = [Account(x) for x in range(0, 10)]
-    print(account_list[6].get_id())
 
-    while True:
-        try:
-            user_id = int(input('Please enter an ID# from 0-9: '))
+    def enter_id():
+        while True:
+            try:
+                user_id = int(input('Please enter an ID# from 0-9: '))
 
-            if user_id in range(0, 10):
-                break
-            else:
+                if user_id in range(0, 10):
+                    return user_id
+                else:
+                    continue
+
+            except ValueError:
+                print('Could not convert input to int. Try again.')
                 continue
 
-        except ValueError:
-            print('Could not convert input to int. Try again.')
-            continue
+    def display_menu():
+        print('\nMain menu')
+        print('1: check balance')
+        print('2: withdraw')
+        print('3: deposit')
+        print('4: exit')
 
-    print('Main menu')
-    print('1: check balance')
-    print('2: withdraw')
-    print('3: deposit')
-    print('4: exit')
+    def enter_menu_option():
+        while True:
+            try:
+                menu_option = int(input('Enter a choice: '))
 
-    while True:
-        try:
-            menu_choice = int(input('Enter a choice: '))
-
-            if menu_choice in range(1, 5):
-                break
-            else:
+                if menu_option in range(1, 5):
+                    return menu_option
+                else:
+                    continue
+            except ValueError:
+                print('Could not convert input to int. Try again.')
                 continue
-        except ValueError:
-            print('Could not convert input to int. Try again.')
-            continue
 
-    if menu_choice is 1:
-        account_list[user_id]
+    def menu_output(user_id, menu_option):
+        if menu_option is 1:
+            print('The balance is', round(account_list[user_id].get_balance(), 2))
+
+        elif menu_option is 2:
+            while True:
+                try:
+                    withdraw_amount = float(input('Enter an amount to withdraw: '))
+
+                    if withdraw_amount >= 0:
+                        break
+                    else:
+                        print('Invalid withdrawal amount.')
+                        continue
+
+                except ValueError:
+                    print('Not a valid input. Try again.')
+                    continue
+
+            account_list[user_id].withdraw(withdraw_amount)
+
+        elif menu_option is 3:
+            while True:
+                try:
+                    deposit_amount = float(input('Enter an amount to deposit: '))
+
+                    if deposit_amount >= 0:
+                        break
+                    else:
+                        print('Invalid deposit amount.')
+                        continue
+
+                except ValueError:
+                    print('Not a valid input. Try again.')
+                    continue
+            account_list[user_id].deposit(deposit_amount)
+
+        elif menu_option is 4:
+            print('')
+            test_atm()
+
+    account_id = enter_id()
+    while True:
+
+        display_menu()
+        menu_choice = enter_menu_option()
+        menu_output(account_id, menu_choice)
 
 
 test_atm()
