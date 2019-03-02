@@ -19,43 +19,61 @@ class Account:
         self.__balance = balance
         self.__annual_interest_rate = annual_interest_rate
 
+    # Returns the monthly interest
     def get_monthly_interest(self):
         monthly_interest_rate = self.__annual_interest_rate / 12
         return (self.__balance * monthly_interest_rate) / 100
 
+    # Returns monthly interest rate
     def get_monthly_interest_rate(self):
         return self.__annual_interest_rate / 12
 
+    # Returns Account id
     def get_id(self):
         return self.__id
 
+    # Sets new account id
     def set_id(self, new_id):
         self.__id = new_id
 
+    # Returns current account balance
     def get_balance(self):
         return self.__balance
 
+    # Sets a new account balance
     def set_balance(self, new_balance):
         self.__balance = new_balance
 
+    # Returns the account's annual interest rate
     def get_annual_interest_rate(self):
         return self.__annual_interest_rate
 
+    # Sets annual interest rate to a new rate
     def set_annual_interest_rate(self, new_annual_interest_rate):
         self.__annual_interest_rate = new_annual_interest_rate
 
+    # Withdraws money from the account balance
     def withdraw(self, withdraw_amount):
         self.set_balance(self.__balance - withdraw_amount)
 
+    # Deposits money into the account balance
     def deposit(self, deposit_amount):
         self.set_balance(self.__balance + deposit_amount)
 
 
 def test_atm():
-
+    """
+    Test function for Account that mimics an ATM screen
+    """
+    # Creates 10 accounts in a list with the ids 0, 1, ..., 9
+    # Each with initial balance of $100
     account_list = [Account(x) for x in range(0, 10)]
 
     def enter_id():
+        """
+        Prompts user for an ID# from 0-9 (inclusive)
+        Returns user ID.
+        """
         while True:
             try:
                 user_id = int(input('Please enter an ID# from 0-9: '))
@@ -70,6 +88,9 @@ def test_atm():
                 continue
 
     def display_menu():
+        """
+        Displays atm menu options
+        """
         print('\nMain menu')
         print('1: check balance')
         print('2: withdraw')
@@ -77,6 +98,10 @@ def test_atm():
         print('4: exit')
 
     def enter_menu_option():
+        """
+        Prompts user for menu option, number between 1-4 (inclusive)
+        Returns menu_option
+        """
         while True:
             try:
                 menu_option = int(input('Enter a choice: '))
@@ -90,13 +115,23 @@ def test_atm():
                 continue
 
     def menu_output(user_id, menu_option):
+        """
+        :param user_id: account_id
+        :param menu_option: User's chosen menu option
+        Performs one of 4 actions to specified account, depending on
+        the chosen menu option.
+        """
+        # Option 1: Prints account balance
         if menu_option is 1:
-            print('The balance is', round(account_list[user_id].get_balance(), 2))
+            print('The balance is',
+                  format(account_list[user_id].get_balance(), '0.2f'))
 
+        # Option 2: Withdraws from account
         elif menu_option is 2:
             while True:
                 try:
-                    withdraw_amount = float(input('Enter an amount to withdraw: '))
+                    withdraw_amount = float(
+                        input('Enter an amount to withdraw: '))
 
                     if withdraw_amount >= 0:
                         break
@@ -110,10 +145,12 @@ def test_atm():
 
             account_list[user_id].withdraw(withdraw_amount)
 
+        # Deposits money into account
         elif menu_option is 3:
             while True:
                 try:
-                    deposit_amount = float(input('Enter an amount to deposit: '))
+                    deposit_amount = float(
+                        input('Enter an amount to deposit: '))
 
                     if deposit_amount >= 0:
                         break
@@ -126,16 +163,26 @@ def test_atm():
                     continue
             account_list[user_id].deposit(deposit_amount)
 
+        # run_atm() called to prompt a new account id
+        # Reworking this from recursion to loop would likely be more efficient
         elif menu_option is 4:
             print('')
-            test_atm()
+            run_atm()
 
-    account_id = enter_id()
-    while True:
+    def run_atm():
+        """
+        Prompts user for account id each time it is called.
+        Menu displayed, and user prompted to choose a menu option.
+        Action corresponding to menu option is completed.
+        """
+        account_id = enter_id()
+        while True:
 
-        display_menu()
-        menu_choice = enter_menu_option()
-        menu_output(account_id, menu_choice)
+            display_menu()
+            menu_choice = enter_menu_option()
+            menu_output(account_id, menu_choice)
+
+    run_atm()
 
 
 test_atm()

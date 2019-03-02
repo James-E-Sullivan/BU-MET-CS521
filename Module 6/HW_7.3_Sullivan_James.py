@@ -86,7 +86,7 @@ def testAccount():
     account_1.deposit(3000)
 
     print('ID:', account_1.get_id())
-    print('Balance:', account_1.get_balance(), "0.2f")
+    print('Balance:', format(account_1.get_balance(), "0.2f"))
     print('Monthly interest rate:', account_1.get_monthly_interest_rate())
     print('Monthly interest:', round(account_1.getMonthlyInterest(), 2))
 
