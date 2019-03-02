@@ -9,8 +9,11 @@ displayed as shown in the sample run. You can enter a choice of 1 for viewing
 the current balance, 2 for withdrawing money, 3 for depositing money, and 4 for
 exiting the main menu. Once you exit, the system will prompt for an id again.
 So, once the system starts, it won't stop.
-"""
 
+*** System exit option added, because there should be an option to stop the
+ program ***
+"""
+import sys
 
 class Account:
 
@@ -95,7 +98,8 @@ def test_atm():
         print('1: check balance')
         print('2: withdraw')
         print('3: deposit')
-        print('4: exit')
+        print('4: exit menu')
+        print('5: exit ATM')
 
     def enter_menu_option():
         """
@@ -106,9 +110,10 @@ def test_atm():
             try:
                 menu_option = int(input('Enter a choice: '))
 
-                if menu_option in range(1, 5):
+                if menu_option in range(1, 6):
                     return menu_option
                 else:
+                    print('Not a menu option. Try again.')
                     continue
             except ValueError:
                 print('Could not convert input to int. Try again.')
@@ -168,6 +173,10 @@ def test_atm():
         elif menu_option is 4:
             print('')
             run_atm()
+
+        elif menu_option is 5:
+            print('Exiting ATM. Goodbye.')
+            sys.exit()
 
     def run_atm():
         """
