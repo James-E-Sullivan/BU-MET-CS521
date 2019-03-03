@@ -73,13 +73,30 @@ class LinearEquation:
 
 def test_LinearEquation():
 
+    # Assigns values to equation1
     equation1 = LinearEquation(9, 4, 3, -5, -6, -21)
-    print('x is', equation1.getX())
-    print('y is', equation1.getY())
+    print('equation1: ')
 
+    # Checks if equation1 is solvable, displays x & y if it is
+    if equation1.isSolvable():
+        print('x is', equation1.getX())
+        print('y is', equation1.getY())
+    else:
+        print('The equation has no solution')
+
+    # Prints blank line between outputs of the two equations
+    print('')
+
+    # Assigns values to equation2
     equation2 = LinearEquation(1, 2, 2, 4, 4, 5)
-    print('x is', equation2.getX())
-    print('y is', equation2.getY())
+    print('equation2: ')
+
+    # Checks if equation1 is solvable, displays x & y if it is
+    if equation2.isSolvable():
+        print('x is', equation2.getX())
+        print('y is', equation2.getY())
+    else:
+        print('The equation has no solution')
 
 
 test_LinearEquation()

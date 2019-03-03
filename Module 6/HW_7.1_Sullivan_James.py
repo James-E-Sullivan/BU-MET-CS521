@@ -19,19 +19,23 @@ and perimeter of each rectangle in this order.
 
 class Rectangle:
 
-    def __init__(self, width=1, height=2):
+    def __init__(self, width=1.0, height=2.0):
         self.__width = width
         self.__height = height
 
+    # returns Rectangle width
     def getWidth(self):
         return self.__width
 
+    # returns Rectangle height
     def getHeight(self):
         return self.__height
 
+    # returns Rectangle area, calculated using width & height values
     def getArea(self):
         return self.__width * self.__height
 
+    # returns Rectangle perimeter, calculated using width & height values
     def getPerimeter(self):
         perimeter = (2 * self.__width) + (2 * self.__height)
         return perimeter
@@ -39,15 +43,18 @@ class Rectangle:
 
 def test_Rectangle_class():
 
+    # Two rectangle objects created with specified width & height values
     rectangle1 = Rectangle(4, 40)
     rectangle2 = Rectangle(3.5, 35.7)
 
+    # rectangle1 values printed
     print('rectangle1')
     print('Width: ', rectangle1.getWidth(), '\n'
           'Height: ', rectangle1.getHeight(), '\n'
           'Area: ', rectangle1.getArea(), '\n'
           'Perimeter: ', rectangle1.getPerimeter(), '\n')
 
+    # rectangle2 values printed
     print('rectangle2')
     print('Width: ', rectangle2.getWidth(), '\n'
           'Height: ', rectangle2.getHeight(), '\n'

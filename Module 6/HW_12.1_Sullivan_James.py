@@ -30,6 +30,8 @@ triangle is filled. The program should create a Triangle object with these
 sides and set the color and filled properties using the input. The program
 should display the triangle's area, perimeter, color, and True or False to
 indicate whether the triangle is filled or not.
+
+* Note: Invalid triangle side length combinations can be passed to new Triangles
 """
 import math
 
@@ -112,7 +114,7 @@ def test_Triangle_Class():
     triangle1.setColor(color)
     triangle1.setFilled(filled)
 
-    print(triangle1.__str__())
+    print('\n' + triangle1.__str__())
     print('Area:', triangle1.get_area())
     print('Perimeter:', triangle1.get_perimeter())
     print('Color:', triangle1.getColor())

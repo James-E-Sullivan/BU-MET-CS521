@@ -29,6 +29,9 @@ Write a test program that creates an Account object with an account id of 1122,
 a balance of $20,000, and an annual interest rate of 4.5%. Use the withdraw
 method to withdraw $2,500, use the deposit method to deposit $3,000, and print
 the id, balance, monthly interest rate, and monthly interest.
+
+* Changed getMonthlyInterest to get_monthly_interest because PyCharm doesn't
+    like when I use camelCase for function names.
 """
 
 
@@ -39,7 +42,7 @@ class Account:
         self.__balance = balance
         self.__annual_interest_rate = annual_interest_rate
 
-    def getMonthlyInterest(self):
+    def get_monthly_interest(self):
         monthly_interest_rate = self.__annual_interest_rate / 12
         return (self.__balance * monthly_interest_rate) / 100
 
@@ -74,11 +77,14 @@ class Account:
 def testAccount():
     """
     Tests account class methods.
-    Creates account_1 with id: 1122, initial balance: $20,000, annual interest rate: 4.5%.
+    Creates account_1 with id: 1122, initial balance: $20,000,
+    annual interest rate: 4.5%.
     Withdraws $2500 with self.withdraw() method
     Deposits $3000 with self.deposit() method
-    Prints ID (1122), Balance ($20,500.00), Monthly Interest Rate (0.375%), and Monthly interest ($76.88)
-    Monthly interest is calculated after self.withdraw() and self.deposit() methods used.
+    Prints ID (1122), Balance ($20,500.00), Monthly Interest Rate (0.375%),
+    and Monthly interest ($76.88)
+    Monthly interest is calculated after self.withdraw() and
+    self.deposit() methods used.
     """
     account_1 = Account(1122, 20000.00, 4.5)
 
@@ -88,7 +94,7 @@ def testAccount():
     print('ID:', account_1.get_id())
     print('Balance:', format(account_1.get_balance(), "0.2f"))
     print('Monthly interest rate:', account_1.get_monthly_interest_rate())
-    print('Monthly interest:', round(account_1.getMonthlyInterest(), 2))
+    print('Monthly interest:', round(account_1.get_monthly_interest(), 2))
 
 
 testAccount()
