@@ -91,6 +91,7 @@ class Triangle(GeometricObject):
 
 def test_Triangle_Class():
 
+    # prompts user for the number of sides, color, whether triangle is filled
     while True:
         try:
             side_list = [float(side) for side in input(
@@ -100,6 +101,7 @@ def test_Triangle_Class():
             color = input("Enter the triangle's color: ")
             filled = bool(int(input("Is the triangle filled? 1=Yes, 0=No: ")))
 
+            # Prompts user again if three sides are not entered
             if len(side_list) is not 3:
                 print('Incorrect amount of inputs. Try again.')
                 continue
@@ -107,13 +109,19 @@ def test_Triangle_Class():
                 break
 
         except ValueError:
-            print('Could not convert input to float. Try again.')
+            print('Could not convert input. Try again.')
 
+    # New triangle object instantiated with side lengths equal to user input
     triangle1 = Triangle(side_list[0], side_list[1], side_list[2])
 
+    # Sets triangle1's color to the user-selected color
     triangle1.setColor(color)
+
+    # Sets triangle1's filled value to user's input
     triangle1.setFilled(filled)
 
+    # Prints string value describing triangle1, and prints the area, perimeter,
+    # color, and whether or not it is filled.
     print('\n' + triangle1.__str__())
     print('Area:', triangle1.get_area())
     print('Perimeter:', triangle1.get_perimeter())

@@ -15,6 +15,7 @@ So, once the system starts, it won't stop.
 """
 import sys
 
+
 class Account:
 
     def __init__(self, id_1=0, balance=100.00, annual_interest_rate=0.0):
@@ -84,6 +85,7 @@ def test_atm():
                 if user_id in range(0, 10):
                     return user_id
                 else:
+                    print('Input not in range 0-9. Try again.')
                     continue
 
             except ValueError:

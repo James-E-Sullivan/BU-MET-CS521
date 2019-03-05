@@ -90,11 +90,11 @@ def test_RegularPolygon():
 
     # Prints perimeter and area of the three polygons
     print('Polygon 1 perimeter:', polygon1.getPerimeter())
-    print('Polygon 1 area:', polygon1.getArea())
+    print('Polygon 1 area:', polygon1.getArea(), '\n')
     print('Polygon 2 perimeter:', polygon2.getPerimeter())
-    print('Polygon 2 area:', polygon2.getArea())
+    print('Polygon 2 area:', polygon2.getArea(), '\n')
     print('Polygon 3 perimeter:', polygon3.getPerimeter())
-    print('Polygon 3 area:', polygon3.getArea())
+    print('Polygon 3 area:', polygon3.getArea(), '\n')
 
 
 test_RegularPolygon()
